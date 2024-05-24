@@ -4,6 +4,7 @@ https://www.youtube.com/watch?v=H2-5ecFwHHQ
 https://playwright.dev/python/docs/api/class-playwright
 https://builtin.com/data-science/asyncio
 https://docs.python.org/3/library/asyncio-task.html
+https://www.zenrows.com/blog/asynchronous-web-scraping-python#scrape-multiple-pages-asynchronously
 '''
 import asyncio
 import json
@@ -55,9 +56,8 @@ async def fetch_data(url):
 async def main():
     tasks = []
     for url in url_list:
-        # allow other data to be fetched concurrently
-        task = asyncio.create_task(fetch_data(url))
-        tasks.append(task)
+        tasks.append(fetch_data(url))
+    # groups and executes tasks concurrently
     results = await asyncio.gather(*tasks)
     # filter out none results (indicating errors)
     filtered_results = [result for result in results if result is not None]
