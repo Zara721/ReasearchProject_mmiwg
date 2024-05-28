@@ -74,5 +74,5 @@ elapsed_time = end_time - start_time
 
 print(f"Code took {elapsed_time}.")
 
-with open('webpage_data/webpage_data.json', 'w') as f:
+with open('data/webpage_data.json', 'w') as f:
     json.dump(data, f, indent=4)

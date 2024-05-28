@@ -60,8 +60,8 @@ themes_df.fillna(0, inplace=True)
 themes_df.to_csv('theme_frequency_table.csv', index=False)
 
 # Reading the previously saved DataFrames
-url_themes_df = pd.read_csv('url_themes.csv')
-theme_frequency_df = pd.read_csv('theme_frequency_table.csv')
+url_themes_df = pd.read_csv('data/url_themes.csv')
+theme_frequency_df = pd.read_csv('data/theme_frequency_table.csv')
 
 # Concatenating the data frames so that the theme_frequency_table has the article_url column
 concatenated_df = pd.concat([theme_frequency_df, url_themes_df['article_url']], axis=1)

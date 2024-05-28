@@ -35,11 +35,11 @@ table = PrettyTable(['Document Identifier', 'Counts', 'Themes'])
 table.align = "l"
 
 # Add headers
-table.field_names = ['Document Identifier', 'Counts', 'Themes']
+table.field_names = ['article_url', 'themes']
 
 # Add rows to the table
 for row in results:
-    table.add_row([row[0], row[1], row[2]])
+    table.add_row([row[0], row[2]])
 
 # Print the table
 print(table)
