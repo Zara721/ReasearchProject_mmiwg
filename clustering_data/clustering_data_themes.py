@@ -10,7 +10,7 @@ Sources:
 https://www.youtube.com/watch?v=iNlZ3IU5Ffw
 '''
 
-df = pd.read_csv('data/theme_frequency_table.csv', index_col='article_url')
+df = pd.read_csv('../data/theme_frequency_table.csv', index_col='article_url')
 
 # since the data only holds binary values no need to standardize the data
 # scaler = StandardScaler()
