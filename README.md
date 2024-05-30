@@ -15,6 +15,9 @@ The last part of my query is filtering, excluding results whose themes start wit
 ### Data Clustering
 After having the data from my SQL query, about half the results were simply not related to MMIWG, so to further clean the data, I used k-means clustering on 711 from a subset of the gkg database that had 100000 rows. The data I used for the clustering was a table with the article_urls as ids and each unique theme as a header; then, for each article, if that theme appeared in the article, it would have a 1 and if not, it would be a 0. After using the elbow method to get an optimal k value of 7, the resulting clusters have definitely made it easier to identify non-relevant articles, with there being a tendency for articles that are about other general topics to be in a cluster with no relevant MMIWG, while some clusters have a mix of MMIWG and non-MMIWG related articles.
 
+### Refining Query
+After getting the data clusters, I identified which articles were often grouped with MMIWG-related topics and refined my query to exclude those topics. This method also led to the query excluding the themes SUICIDE, MENTAL HEALTH and ILLEGAL DRUGS, which reduced the data by about 20%. Although the clustering using themes worked well, I also made clusters around Counts and AllNames to check whether there was a better method. Ultimately, AllNames was unsuitable for clustering, with around 90% of the data being repeatedly grouped into one cluster. By contrast, Counts (after removing numbers) could cluster the data quite well.
+
 ### Helpful Links
 * https://www.gdeltproject.org/
 * https://blog.gdeltproject.org/gdelt-2-0-our-global-world-in-realtime/
