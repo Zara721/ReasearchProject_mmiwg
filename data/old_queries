@@ -49,3 +49,15 @@ WHERE (me.Counts LIKE '%KILL%' OR me.AllNames LIKE '%Murder&')
 GROUP BY me.Themes;
 
 """
+
+"""
+SELECT MIN(me.DocumentIdentifier) as DocumentIdentifier, MAX(me.Counts) as Counts, me.Themes
+FROM large_events me
+WHERE (me.Counts LIKE '%KILL%' OR me.AllNames LIKE '%Murder&')
+  AND me.Counts LIKE '%Canada%'
+  AND (me.AllNames LIKE '%First Nation%' OR me.Counts LIKE '%Indigenous%' OR me.Themes LIKE '%INDIGENOUS%')
+  AND me.DocumentIdentifier NOT LIKE '%covid%' AND me.DocumentIdentifier NOT LIKE '%corona%' AND me.Themes NOT LIKE '%PANDEMIC%' AND me.THEMES NOT LIKE '%CORONAVIRUS%'
+  AND me.DocumentIdentifier NOT LIKE '%pipeline%' AND me.Themes NOT LIKE '%PIPELINE%'
+  AND me.Themes NOT LIKE 'EDUCATION%' AND me.Themes NOT LIKE 'GENERAL_GOVERNMENT%' AND me.Themes NOT LIKE 'GENERAL_HEALTH%' AND me.Themes NOT LIKE 'MANMADE_DISASTER_IMPLIED%' AND me.Themes NOT LIKE 'TAX_DISEASE%'
+GROUP BY me.Themes;
+"""

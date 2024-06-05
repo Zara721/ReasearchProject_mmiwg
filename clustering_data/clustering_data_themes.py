@@ -2,12 +2,13 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 
 '''
 Sources:
 https://www.youtube.com/watch?v=iNlZ3IU5Ffw
+https://www.w3schools.com/python/matplotlib_intro.asp
+https://builtin.com/data-science/pandas-show-all-columns
 '''
 
 df = pd.read_csv('../data/theme_frequency_table.csv', index_col='article_url')
@@ -37,50 +38,51 @@ def optimise_k_means(data, max_k):
     plt.grid(True)
     plt.show()
 
-# optimise_k_means(df, 12)
+
+optimise_k_means(df, 10)
 
 
-kmeans = KMeans(n_clusters=7)
-kmeans.fit(df)
-df['kmeans_7'] = kmeans.labels_
-
-# pd.set_option('display.max_columns', None)
-# pd.set_option('max_colwidth', None)
-# # print(df['kmeans_3'])
-# print(df['kmeans_7'].head(50))
-
-# plt.scatter(x=df['KILL'], y=df['TAX_ETHNICITY_INDIGENOUS'], c=df['kmeans_7'])
-# plt.xlim(-0.1, 7)
-# plt.ylim(-0.1, 7)
-# plt.show()
-
-x = np.array([0, 1, 2, 3, 4, 5, 6])
-y = []
-
-counts = df['kmeans_7'].value_counts()
-
-# Iterate over x and append the count for each number in x to y
-for num in x:
-    if num in counts.index:
-        y.append(counts[num])
-    else:
-        # Handle cases where a number in x does not appear in 'kmeans_7'
-        y.append(0)  # Or handle differently based on your requirements
-
-# Convert y to a NumPy array
-y = np.array(y)
-
-print(counts)
-
-# plt.bar(x, y)
-# # plt.xlabel('Cluster Groups')
-# # plt.ylabel('Articles')
-# # plt.title('Cluster Distribution')
+# kmeans = KMeans(n_clusters=7)
+# kmeans.fit(df)
+# df['kmeans_7'] = kmeans.labels_
+#
+# # pd.set_option('display.max_columns', None)
+# # pd.set_option('max_colwidth', None)
+# # # print(df['kmeans_3'])
+# # print(df['kmeans_7'].head(50))
+#
+# # plt.scatter(x=df['KILL'], y=df['TAX_ETHNICITY_INDIGENOUS'], c=df['kmeans_7'])
+# # plt.xlim(-0.1, 7)
+# # plt.ylim(-0.1, 7)
 # # plt.show()
-
-# Sort the DataFrame by the 'kmeans' column in ascending order
-sorted_df = df[['kmeans_7']].sort_values(by='kmeans_7', ascending=True)
-pd.set_option('display.max_columns', None)
-pd.set_option('display.max_rows', None)
-pd.set_option('max_colwidth', None)
-print(sorted_df)
+#
+# x = np.array([0, 1, 2, 3, 4, 5, 6])
+# y = []
+#
+# counts = df['kmeans_7'].value_counts()
+#
+# # Iterate over x and append the count for each number in x to y
+# for num in x:
+#     if num in counts.index:
+#         y.append(counts[num])
+#     else:
+#         # Handle cases where a number in x does not appear in 'kmeans_7'
+#         y.append(0)  # Or handle differently based on your requirements
+#
+# # Convert y to a NumPy array
+# y = np.array(y)
+#
+# print(counts)
+#
+# # plt.bar(x, y)
+# # # plt.xlabel('Cluster Groups')
+# # # plt.ylabel('Articles')
+# # # plt.title('Cluster Distribution')
+# # # plt.show()
+#
+# # Sort the DataFrame by the 'kmeans' column in ascending order
+# sorted_df = df[['kmeans_7']].sort_values(by='kmeans_7', ascending=True)
+# pd.set_option('display.max_columns', None)
+# pd.set_option('display.max_rows', None)
+# pd.set_option('max_colwidth', None)
+# print(sorted_df)

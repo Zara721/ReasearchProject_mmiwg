@@ -13,11 +13,12 @@ SELECT MIN(me.DocumentIdentifier) as DocumentIdentifier, me.Themes
 FROM large_events me
 WHERE (me.Counts LIKE '%KILL%' OR me.AllNames LIKE '%Murder&')
   AND me.Counts LIKE '%Canada%'
-  AND (me.AllNames LIKE '%First Nation%' OR me.Counts LIKE '%Indigenous%' OR me.Themes LIKE '%INDIGENOUS%')
-  AND me.DocumentIdentifier NOT LIKE '%covid%' AND me.DocumentIdentifier NOT LIKE '%corona%' AND me.THEMES NOT LIKE '%PANDEMIC%' AND me.THEMES NOT LIKE '%CORONAVIRUS%'
-  AND me.DocumentIdentifier NOT LIKE '%pipeline%' AND me.THEMES NOT LIKE '%PIPELINE%'
-  AND me.THEMES NOT LIKE 'EDUCATION%' AND me.THEMES NOT LIKE 'GENERAL_GOVERNMENT%' AND me.THEMES NOT LIKE 'GENERAL_HEALTH%' AND me.THEMES NOT LIKE 'MANMADE_DISASTER_IMPLIED%' AND me.THEMES NOT LIKE 'TAX_DISEASE%'
-GROUP BY me.Themes;
+  AND (me.AllNames LIKE '%First Nation%' OR me.AllNames LIKE '%Indigenous%' OR me.Counts LIKE '%Indigenous%' OR me.Themes LIKE '%INDIGENOUS%')
+  AND me.DocumentIdentifier NOT LIKE '%covid%' AND me.DocumentIdentifier NOT LIKE '%corona%' AND me.Themes NOT LIKE '%PANDEMIC%' AND me.THEMES NOT LIKE '%CORONAVIRUS%'
+  AND me.DocumentIdentifier NOT LIKE '%pipeline%' AND me.Themes NOT LIKE '%PIPELINE%'
+  AND me.Themes NOT LIKE '%SUICIDE%' AND me.Themes NOT LIKE '%MENTAL_HEALTH%' AND me.Themes NOT LIKE '%ILLEGAL_DRUGS%'
+  AND me.Themes NOT LIKE 'EDUCATION%' AND me.Themes NOT LIKE 'GENERAL_GOVERNMENT%' AND me.Themes NOT LIKE 'GENERAL_HEALTH%' AND me.Themes NOT LIKE 'MANMADE_DISASTER_IMPLIED%' AND me.Themes NOT LIKE 'TAX_DISEASE%'
+GROUP BY me.Themes
 """
 # Executing the query
 cursor.execute(query)
@@ -29,15 +30,20 @@ results = cursor.fetchall()
 df = pd.DataFrame(results, columns=['article_url', 'themes'])
 
 # Saving the DataFrame to a CSV file named 'url_themes.csv'
-df.to_csv('url_themes.csv', index=False)
+df.to_csv('../data/url_themes.csv', index=False)
 
 # Close the connection to the SQLite database
 sqliteConnection.close()
+
+filename = '../data/theme_frequency_table.csv'
 
 
 def parse_themes(themes):
     # Split the themes string by semicolon
     theme_list = themes.split(';')
+
+    # # Filter the list to keep only entries that contain the string "TAX_FNCACT"
+    # filtered_theme_list = [theme for theme in theme_list if "TAX_FNCACT" in theme]
     return theme_list
 
 
@@ -57,16 +63,16 @@ for index, row in df.iterrows():
 themes_df.fillna(0, inplace=True)
 
 # save the new DataFrame to a CSV file
-themes_df.to_csv('theme_frequency_table.csv', index=False)
+themes_df.to_csv(filename, index=False)
 
 # Reading the previously saved DataFrames
 url_themes_df = pd.read_csv('../data/url_themes.csv')
-theme_frequency_df = pd.read_csv('../data/theme_frequency_table.csv')
+theme_frequency_df = pd.read_csv(filename)
 
 # Concatenating the data frames so that the theme_frequency_table has the article_url column
 concatenated_df = pd.concat([theme_frequency_df, url_themes_df['article_url']], axis=1)
 
-# Overwriting the 'theme_frequency_table.csv' file so it has the article_url column
-concatenated_df.to_csv('theme_frequency_table.csv', index=False)
+# Overwriting the 'theme_frequency_table.csv' file, so it has the article_url column
+concatenated_df.to_csv(filename, index=False)
 
 
