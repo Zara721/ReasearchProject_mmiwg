@@ -12,16 +12,17 @@ cursor = sqliteConnection.cursor()
 
 # Define and execute the query
 query = """
+SELECT DocumentIdentifier, DATE, Locations 
+FROM small_test_data
+ORDER BY DATE
+"""
+
+"""
 SELECT DocumentIdentifier, DATE, AllNames 
 FROM mmiwg_events
 ORDER BY Themes;
 """
 
-"""
-SELECT DocumentIdentifier, DATE, Locations 
-FROM small_test_data
-ORDER BY DATE
-"""
 
 
 cursor.execute(query)
