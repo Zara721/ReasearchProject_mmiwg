@@ -84,6 +84,6 @@ cleaned_text = clean_body_from_excel(file_path)
 print(cleaned_text)
 
 # Open the file in write mode ('w')
-with open('output.txt', 'w', encoding='utf-8') as file:
+with open('data/output.txt', 'w', encoding='utf-8') as file:
     # Write a string to the file
     file.write(cleaned_text)
