@@ -36,8 +36,9 @@ sqliteConnection.close()
 years = list(range(2015, 2025))
 
 # Plot a bar chart of the article counts per year with manual x-ticks
-plt.figure(figsize=(10, 6))
-plt.bar(years, df_yearly['article_count'], color='#5e1926')
+plt.figure(figsize=(10, 6), facecolor="#e3dccf")
+plt.axes().set_facecolor("#f5f2ed")
+plt.bar(years, df_yearly['article_count'], color='#3d8a91')
 plt.title('MMIWG Articles Counts (2015-2024)', fontsize=16)
 plt.xlabel('Year', fontsize=12)
 plt.ylabel('Article Count', fontsize=12)
