@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Simple web page Template</title>
+    <title>MMIWG Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -72,8 +72,8 @@
                 </p>
                 <img src="visuals\top_30_themes.png" alt="visuals" id="themeImage">
                 <div class="button-wrapper">
-                    <button id="prevButton">Previous</button>
-                    <button id="nextButton">Next</button>
+                    <button class="arrowBtn" id="prevButtonThirdSection">Previous</button>
+                    <button class="arrowBtn" id="nextButtonThirdSection">Next</button>
                 </div>
             </div>
         </div>
@@ -87,7 +87,7 @@
                     Domain Names
                 </h1>
                 <p class="text-small">
-                    Talk about how you got the aticle counts and what the graphic is about.
+                    Talk about how you got the domain names and what the graphic is about.
                     C is a procedural programming language. It
                     was initially developed by Dennis Ritchie
                     as a system programming language to write
@@ -103,6 +103,34 @@
         </div>
     </section>
 
+    <section class="fifthsection">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big">
+                    Wordclouds
+                </h1>
+                <p class="text-small">
+                    Talk about how you got the word clouds and what the graphic is about.
+                    C is a procedural programming language. It
+                    was initially developed by Dennis Ritchie
+                    as a system programming language to write
+                    operating system. The main features of C
+                    language include low-level access to memory,
+                    simple set of keywords, and clean style,
+                    these features make C language suitable for
+                    system programming like operating system or
+                    compiler development.
+                </p>
+                <img src="visuals/MMIWG_article_titles_word_cloud.png" alt="visuals" id="wordCloudImage">
+                <div class="button-wrapper">
+                    <button class="arrowBtn" id="prevButtonFifthSection">Previous</button>
+                    <button class="arrowBtn" id="nextButtonFifthSection">Next</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 
     <footer class="background">
         <p class="text-footer">
@@ -112,37 +140,61 @@
 
     <script>
         // Array of image filenames
-        var images = [
+        var themeImages = [
             "visuals\\top_30_themes.png",
             "visuals\\top_themes_2015_to_2018.png",
             "visuals\\top_themes_2018_to_2022.png",
             "visuals\\top_themes_2022_to_2024.png",
         ];
+
+        var wordCloudImages = [
+            "visuals/MMIWG_article_titles_word_cloud.png",
+            "visuals/MMIWG_article_body_word_cloud.png",
+            "visuals/MMIWG_article_all_names_word_cloud.png",
+        ];
         
         // Index of the currently displayed image
-        var currentIndex = 0;
+        var currentIndexTheme = 0;
+        var currentIndexWordCloud = 0;
         
-        function displayImage(index) {
-            document.getElementById('themeImage').src = images[index];
+        function displayImage(index, image, images) {
+            document.getElementById(image).src = images[index];
         }
         
         // Display the first image initially
-        displayImage(currentIndex);
+        displayImage(currentIndexTheme, 'themeImage', themeImages);
+        displayImage(currentIndexWordCloud, 'wordCloudImage', wordCloudImages)
         
-        document.getElementById('prevButton').addEventListener('click', function() {
-            currentIndex--;
-            if (currentIndex < 0) {
-                currentIndex = images.length - 1; // Loop back to the last image
+        document.getElementById('prevButtonThirdSection').addEventListener('click', function() {
+            currentIndexTheme--;
+            if (currentIndexTheme < 0) {
+                currentIndexTheme = themeImages.length - 1; // Loop back to the last image
             }
-            displayImage(currentIndex);
+            displayImage(currentIndexTheme, 'themeImage', themeImages);
         });
         
-        document.getElementById('nextButton').addEventListener('click', function() {
-            currentIndex++;
-            if (currentIndex >= images.length) {
-                currentIndex = 0; // Loop back to the first image
+        document.getElementById('nextButtonThirdSection', themeImages).addEventListener('click', function() {
+            currentIndexTheme++;
+            if (currentIndexTheme >= themeImages.length) {
+                currentIndexTheme = 0; // Loop back to the first image
             }
-            displayImage(currentIndex);
+            displayImage(currentIndexTheme, 'themeImage', themeImages);
+        });
+
+        document.getElementById('prevButtonFifthSection').addEventListener('click', function() {
+            currentIndexWordCloud--;
+            if (currentIndexWordCloud < 0) {
+                currentIndexWordCloud = wordCloudImages.length - 1; // Loop back to the last image
+            }
+            displayImage(currentIndexWordCloud, 'wordCloudImage', wordCloudImages)
+        });
+
+        document.getElementById('nextButtonFifthSection').addEventListener('click', function() {
+            currentIndexWordCloud++;
+            if (currentIndexWordCloud >= wordCloudImages.length) {
+                currentIndexWordCloud = 0; // Loop back to the first image
+            }
+            displayImage(currentIndexWordCloud, 'wordCloudImage', wordCloudImages)
         });
         </script>
         

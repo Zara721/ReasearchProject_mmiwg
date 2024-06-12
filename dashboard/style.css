@@ -75,12 +75,12 @@
     justify-content: center;
 }
 
-#prevButton, #nextButton {
+.arrowBtn {
     padding: 10px;
     margin: 10px;
     border: 0;
     border-radius: 10px;
-    background-color: rgb(81, 112, 165);
+    background-color: rgb(244, 246, 236);
     font-family:'Lucida Sans', sans-serif;
     font-weight: 200;
     cursor: pointer;
@@ -90,11 +90,18 @@
     background-color: rgb(240, 239, 229);
     height: 900px;
 }
+
+.fifthsection {
+    background-color: rgb(13, 20, 38);
+    height: 1000px;
+    color: rgb(231, 236, 240);
+}
+
+
 .box-main {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
     max-width: 80%;
     margin: auto;
     height: 100%;
