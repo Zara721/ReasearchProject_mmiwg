@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple web page Template</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar background">
+        <ul class="nav-list">
+            <li><a href="">Home</a></li>
+            <li><a href="https://github.com/Zara721/ReasearchProject_mmiwg">GitHub</a></li>
+        </ul>
+    </nav>
+
+    <section class="firstsection">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big">
+                    MMIWG Research Project - Dashboard
+                  </h1>
+                <p class="text-small">
+                    //Note to self update text; Using data obtained from the GDELT project, specifically the Global Knowledge Graph (gkg) dataset, this project aims to study how MMIWG is represented in the news. By extracting and filtering data from the gkg that pertains to Canada and Indigenous people, I will analyze the resulting data and use various forms of data representation to identify different trends and truths about MMIWG.
+                </p>
+
+
+            </div>
+        </div>
+    </section>
+
+    <section class="secondsection">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big">
+                    Article Counts
+                </h1>
+                <p class="text-small">
+                    Talk about how you got the aticle counts and what the graphic is about.
+                    C is a procedural programming language. It
+                    was initially developed by Dennis Ritchie
+                    as a system programming language to write
+                    operating system. The main features of C
+                    language include low-level access to memory,
+                    simple set of keywords, and clean style,
+                    these features make C language suitable for
+                    system programming like operating system or
+                    compiler development.
+                </p>
+                <img src="visuals/MMIWG_article_counts_2015_to_2024.png" alt="visuals">
+            </div>
+        </div>
+    </section>
+
+    <section class="thirdsection">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big">
+                    Article Themes
+                </h1>
+                <p class="text-small">
+                    Talk about how you got the aticle themes and what the graphic is about.
+                    C is a procedural programming language. It
+                    was initially developed by Dennis Ritchie
+                    as a system programming language to write
+                    operating system. The main features of C
+                    language include low-level access to memory,
+                    simple set of keywords, and clean style,
+                    these features make C language suitable for
+                    system programming like operating system or
+                    compiler development.
+                </p>
+                <img src="visuals\top_30_themes.png" alt="visuals" id="themeImage">
+                <div class="button-wrapper">
+                    <button id="prevButton">Previous</button>
+                    <button id="nextButton">Next</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="fourthsection">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big">
+                    Domain Names
+                </h1>
+                <p class="text-small">
+                    Talk about how you got the aticle counts and what the graphic is about.
+                    C is a procedural programming language. It
+                    was initially developed by Dennis Ritchie
+                    as a system programming language to write
+                    operating system. The main features of C
+                    language include low-level access to memory,
+                    simple set of keywords, and clean style,
+                    these features make C language suitable for
+                    system programming like operating system or
+                    compiler development.
+                </p>
+                <img src="visuals/domain_name_counts_greater_than_10.png" alt="visuals">
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="background">
+        <p class="text-footer">
+            2024 MMIWG Research Project
+        </p>
+    </footer>
+
+    <script>
+        // Array of image filenames
+        var images = [
+            "visuals\\top_30_themes.png",
+            "visuals\\top_themes_2015_to_2018.png",
+            "visuals\\top_themes_2018_to_2022.png",
+            "visuals\\top_themes_2022_to_2024.png",
+        ];
+        
+        // Index of the currently displayed image
+        var currentIndex = 0;
+        
+        function displayImage(index) {
+            document.getElementById('themeImage').src = images[index];
+        }
+        
+        // Display the first image initially
+        displayImage(currentIndex);
+        
+        document.getElementById('prevButton').addEventListener('click', function() {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1; // Loop back to the last image
+            }
+            displayImage(currentIndex);
+        });
+        
+        document.getElementById('nextButton').addEventListener('click', function() {
+            currentIndex++;
+            if (currentIndex >= images.length) {
+                currentIndex = 0; // Loop back to the first image
+            }
+            displayImage(currentIndex);
+        });
+        </script>
+        
+</body>
+
+</html>

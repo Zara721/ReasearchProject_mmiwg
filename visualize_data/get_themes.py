@@ -9,7 +9,7 @@ cursor = sqliteConnection.cursor()
 
 # Define SQL query
 query = """
-SELECT DocumentIdentifier, Themes
+SELECT DATE, Themes
 FROM mmiwg_events 
 """
 # Executing the query
@@ -19,7 +19,7 @@ cursor.execute(query)
 results = cursor.fetchall()
 
 # Convert the results to a DataFrame
-df = pd.DataFrame(results, columns=['article_url', 'themes'])
+df = pd.DataFrame(results, columns=['date', 'themes'])
 
 # Saving the DataFrame to a CSV file named 'url_themes.csv'
 df.to_csv('data/article_themes.csv', index=False)
@@ -27,7 +27,7 @@ df.to_csv('data/article_themes.csv', index=False)
 # Close the connection to the SQLite database
 sqliteConnection.close()
 
-filename = 'data/article_themes_frequency_chart.csv'
+filename = 'data/article_themes_date.csv'
 
 
 def parse_themes(themes):
@@ -55,14 +55,14 @@ themes_df.fillna(0, inplace=True)
 # save the new DataFrame to a CSV file
 themes_df.to_csv(filename, index=False)
 
-# # Reading the previously saved DataFrames
-# url_themes_df = pd.read_csv('data/article_themes.csv')
-# theme_frequency_df = pd.read_csv(filename)
-#
-# # Concatenating the data frames so that the theme_frequency_table has the article_url column
-# concatenated_df = pd.concat([theme_frequency_df, url_themes_df['article_url']], axis=1)
-#
-# # Overwriting the 'theme_frequency_table.csv' file, so it has the article_url column
-# concatenated_df.to_csv(filename, index=False)
+# Reading the previously saved DataFrames
+url_themes_df = pd.read_csv('data/article_themes.csv')
+theme_frequency_df = pd.read_csv(filename)
+
+# Concatenating the data frames so that the theme_frequency_table has the article_url column
+concatenated_df = pd.concat([theme_frequency_df, url_themes_df['date']], axis=1)
+
+# Overwriting the 'theme_frequency_table.csv' file, so it has the article_url column
+concatenated_df.to_csv(filename, index=False)
 
 

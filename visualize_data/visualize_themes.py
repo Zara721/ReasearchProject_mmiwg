@@ -16,11 +16,10 @@ sum_df.index = ['total']
 # Concatenate the original DataFrame with the sum DataFrame
 df_final = pd.concat([df, sum_df])
 
-# Print the final DataFrame
-print(df_final)
-
 # Calculate the top 30 values from the total row
 top_30_totals = df_final.loc['total'].nlargest(30)
+
+print(df)
 
 # Set figure size for the plot
 plt.figure(figsize=(12, 10), facecolor="#e3dccf")
@@ -28,7 +27,7 @@ plt.figure(figsize=(12, 10), facecolor="#e3dccf")
 plt.axes().set_facecolor("#f5f2ed")
 
 # Plot the bar chart with the top 30 totals and their counts
-plt.barh(top_30_totals.index, top_30_totals.values, color='#3d8a91')
+plt.barh(top_30_totals.index, top_30_totals.values, color='#3d6391')
 
 # Customize the plot
 plt.xlabel('Number of Articles', fontsize=12)
