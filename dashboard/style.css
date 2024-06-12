@@ -14,7 +14,7 @@
 }
 
 .background {
-    background: black;
+    background: rgb(0, 0, 0);
     background-blend-mode: darken;
     background-size: cover;
 }
@@ -55,7 +55,7 @@
 }
 
 .firstsection {
-    background-color: rgb(176, 210, 224);
+    background-color: rgb(128, 182, 205);
     height: 300px;
 }
 
@@ -65,8 +65,8 @@
 }
 
 .thirdsection {
-    background-color: rgb(176, 210, 224);
-    height: 1000px;
+    background-color: rgb(128, 182, 205);
+    height: 1200px;
 }
 
 .thirdsection.box-main.button-wrapper {
@@ -81,7 +81,7 @@
     border: 0;
     border-radius: 10px;
     background-color: rgb(244, 246, 236);
-    font-family:'Lucida Sans', sans-serif;
+    font-family: 'Piazzolla', serif;
     font-weight: 200;
     cursor: pointer;
 }
@@ -93,8 +93,8 @@
 
 .fifthsection {
     background-color: rgb(13, 20, 38);
-    height: 1000px;
-    color: rgb(231, 236, 240);
+    height: 1100px;
+    color: rgb(240, 239, 229);
 }
 
 
@@ -183,7 +183,6 @@
 .text-footer {
     text-align: center;
     padding: 10px;
-    font-family: 'Ubuntu', sans-serif;
     display: flex;
     justify-content: left;
     color: white;

@@ -21,9 +21,7 @@
                     MMIWG Research Project - Dashboard
                   </h1>
                 <p class="text-small">
-                    //Note to self update text; Using data obtained from the GDELT project, specifically the Global Knowledge Graph (gkg) dataset, this project aims to study how MMIWG is represented in the news. By extracting and filtering data from the gkg that pertains to Canada and Indigenous people, I will analyze the resulting data and use various forms of data representation to identify different trends and truths about MMIWG.
-                </p>
-
+                    The MMIWG Research Project Dashboard is a visual exploration of the representation of Missing and Murdered Indigenous Women and Girls (MMIWG) in global media. Leveraging data from the Global Knowledge Graph (GKG) database, part of the GDELT project, this dashboard provides a unique perspective on how MMIWG issues are reported and perceived across various news sites. The primary dataset for the following visualizations consists of 1703 entries, analyzing article counts, thematic trends, domain names, and word clouds derived from articles published between 2015 and 2024. Notably, for the word cloud, only ~1000 URLs were used, as those were the ones whose title and body text were successfully retrieved.                </p>
 
             </div>
         </div>
@@ -36,16 +34,7 @@
                     Article Counts
                 </h1>
                 <p class="text-small">
-                    Talk about how you got the aticle counts and what the graphic is about.
-                    C is a procedural programming language. It
-                    was initially developed by Dennis Ritchie
-                    as a system programming language to write
-                    operating system. The main features of C
-                    language include low-level access to memory,
-                    simple set of keywords, and clean style,
-                    these features make C language suitable for
-                    system programming like operating system or
-                    compiler development.
+                    The bar chart below shows the number of articles retrieved from 2015 to 2024. Most notably, there is a pretty even amount of around 250 articles from 2015-2019, followed by a sharp drop off in 2020 that is roughly maintained till 2024. However, it should be noted that although I filtered out a large percentage of duplicate articles, with each URL left being unique, there is still a certain percentage of URLs that link to the same article as others despite being hosted on different websites, which will have some effect on the data.
                 </p>
                 <img src="visuals/MMIWG_article_counts_2015_to_2024.png" alt="visuals">
             </div>
@@ -59,16 +48,10 @@
                     Article Themes
                 </h1>
                 <p class="text-small">
-                    Talk about how you got the aticle themes and what the graphic is about.
-                    C is a procedural programming language. It
-                    was initially developed by Dennis Ritchie
-                    as a system programming language to write
-                    operating system. The main features of C
-                    language include low-level access to memory,
-                    simple set of keywords, and clean style,
-                    these features make C language suitable for
-                    system programming like operating system or
-                    compiler development.
+                    The bar charts below illustrate the distribution of the themes that appeared the most in the articles. However, because the GDELT algorithm automatically picked up on the different themes present on a page, this affects the accuracy, with themes mainly being identified by textual search instead of a more complex neural network. This sort of search also includes text that wasn't directly about the article in question but is simply present on the page, like previews for other articles.<br>
+
+                    <br>While most of the themes listed are very general, some are generalized to the point of lacking meaningful information. For example, TAX_FNACT simply means there was an actor. So themes like TAX_FNACT_INDIGENOUS mean that there is an Indigenous person mentioned in the article. Moreover, the theme KILL and themes that include the term INDIGENOUS are mentioned in virtually every article because those are keywords used to get relevant articles from the larger dataset, making their presence biased.
+                    Furthermore, when making the top 10 themes for each year, some themes that were too generalized were excluded. The exluded themes were 'TAX_FNCACT', 'AFFECT', 'Unnamed: 101', 'TAX_ETHNICITY', and 'CRISISLEX_CRISISLEXREC'.
                 </p>
                 <img src="visuals\top_30_themes.png" alt="visuals" id="themeImage">
                 <div class="button-wrapper">
@@ -87,39 +70,24 @@
                     Domain Names
                 </h1>
                 <p class="text-small">
-                    Talk about how you got the domain names and what the graphic is about.
-                    C is a procedural programming language. It
-                    was initially developed by Dennis Ritchie
-                    as a system programming language to write
-                    operating system. The main features of C
-                    language include low-level access to memory,
-                    simple set of keywords, and clean style,
-                    these features make C language suitable for
-                    system programming like operating system or
-                    compiler development.
+                    The graph below shows the distribution of domain names for the 1703 articles in the mmiwg events database. //expand after revising graph
                 </p>
                 <img src="visuals/domain_name_counts_greater_than_10.png" alt="visuals">
             </div>
         </div>
     </section>
 
+
     <section class="fifthsection">
         <div class="box-main">
             <div class="firstHalf">
                 <h1 class="text-big">
-                    Wordclouds
+                    Word Clouds
                 </h1>
                 <p class="text-small">
-                    Talk about how you got the word clouds and what the graphic is about.
-                    C is a procedural programming language. It
-                    was initially developed by Dennis Ritchie
-                    as a system programming language to write
-                    operating system. The main features of C
-                    language include low-level access to memory,
-                    simple set of keywords, and clean style,
-                    these features make C language suitable for
-                    system programming like operating system or
-                    compiler development.
+                    The word clouds below visualize all the text in the article titles, article bodies, and names. The larger the word appears in the word cloud, the more often it is mentioned within the respective body of text. To prepare the data so that I could use it to make the word clouds, the raw data taken from the websites had to be cleaned. I did this by normalizing the data (converting it to decomposed form to help standardize the representation of characters), converting all uppercase to lowercase and removing non-alphanumeric characters (letters and digits).<br> 
+
+                <br>For the word cloud with all names, additional cleaning had to be done, including removing all the numbers and replacing all semicolons with spaces. This extra prep was necessary because the all names data is from the GDELT database, where each article has an entry list of all proper names referenced in the document, with the names separated by semicolons instead of spaces.
                 </p>
                 <img src="visuals/MMIWG_article_titles_word_cloud.png" alt="visuals" id="wordCloudImage">
                 <div class="button-wrapper">
