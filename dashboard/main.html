@@ -50,7 +50,7 @@
                 <p class="text-small">
                     The bar charts below illustrate the distribution of the themes that appeared the most in the articles. However, because the GDELT algorithm automatically picked up on the different themes present on a page, this affects the accuracy, with themes mainly being identified by textual search instead of a more complex neural network. This sort of search also includes text that wasn't directly about the article in question but is simply present on the page, like previews for other articles.<br>
 
-                    <br>While most of the themes listed are very general, some are generalized to the point of lacking meaningful information. For example, TAX_FNACT simply means there was an actor. So themes like TAX_FNACT_INDIGENOUS mean that there is an Indigenous person mentioned in the article. Moreover, the theme KILL and themes that include the term INDIGENOUS are mentioned in virtually every article because those are keywords used to get relevant articles from the larger dataset, making their presence biased.
+                    <br>While most of the themes listed are very general, some are generalized to the point of lacking meaningful information. For example, TAX_FNACT simply means there was an actor. So, themes like TAX_FNACT_INDIGENOUS mean that there is an Indigenous person mentioned in the article. Moreover, the theme KILL and themes that include the term INDIGENOUS are mentioned in virtually every article because those are keywords used to get relevant articles from the larger dataset, making their presence biased.
                     Furthermore, when making the top 10 themes for each year, some themes that were too generalized were excluded. The exluded themes were 'TAX_FNCACT', 'AFFECT', 'Unnamed: 101', 'TAX_ETHNICITY', and 'CRISISLEX_CRISISLEXREC'.
                 </p>
                 <img src="visuals\top_30_themes.png" alt="visuals" id="themeImage">
@@ -70,7 +70,7 @@
                     Domain Names
                 </h1>
                 <p class="text-small">
-                    The graph below shows the distribution of domain names for the 1703 articles in the mmiwg events database. //expand after revising graph
+                    The graph below shows the distribution of domain names for the 1703 articles in the mmiwg events database. The initial graph could have been more accurate, as domain names from the same domain but with different versions, like www.ctvnews.ca and winnipeg.ctvnews.ca, were categorized under different domains. To fix this issue, I manually made lists of various versions of the same domain and then aggregated the counts for the graph below.
                 </p>
                 <img src="visuals/aggregated_domain_name_counts_greater_than_10.png" alt="visuals">
             </div>
