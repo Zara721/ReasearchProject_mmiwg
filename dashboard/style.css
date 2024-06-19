@@ -47,16 +47,9 @@
     text-align: right;
 }
 
-#search {
-    padding: 5px;
-    font-size: 17px;
-    border: 2px solid grey;
-    border-radius: 9px;
-}
-
 .firstsection {
     background-color: rgb(128, 182, 205);
-    height: 300px;
+    height: 400px;
 }
 
 .secondsection {
@@ -66,7 +59,7 @@
 
 .thirdsection {
     background-color: rgb(128, 182, 205);
-    height: 1100px;
+    height: 1000px;
 }
 
 .thirdsection.box-main.button-wrapper {
@@ -93,10 +86,57 @@
 
 .fifthsection {
     background-color: rgb(13, 20, 38);
-    height: 1100px;
+    height: 1000px;
     color: rgb(240, 239, 229);
 }
 
+.article_links_sections {
+    background-color: rgb(240, 239, 229);
+    height: 750px;
+}
+
+/* Table styling */
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse; /* remove spacing between columns */
+    border-spacing: 10px; /* adjust the spacing as needed */
+    border-radius: 5px; /* rounds the corners of the table */
+}
+
+td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-word; /* break words to prevent overflow */
+    padding: 5px; /* adds some padding inside the cells for better appearance */
+    border: 1px solid #8f8f8f; 
+    text-align: left; 
+}
+
+th {
+    border: 1px solid #8f8f8f; 
+    padding: 5px;
+    font-size: 18px;
+}
+
+.table-container {
+    height: 500px; 
+    overflow: scroll;
+    width: 100%;
+    background-color: rgb(252, 252, 252);
+}
+
+#csvTable thead {
+    display: table;
+    width: 100%; /* Ensure the header spans the full width */
+    table-layout: fixed; /* Prevent column shifting */
+}
+
+#csvTable tbody {
+    display: block;
+    max-height: calc(100% - 40px); /* Adjust based on the height of your header */
+}
 
 .box-main {
     display: flex;
@@ -141,7 +181,8 @@
 
 .text-small {
     font-size: 18px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .btn {

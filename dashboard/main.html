@@ -10,6 +10,7 @@
     <nav class="navbar background">
         <ul class="nav-list">
             <li><a href="">Home</a></li>
+            <li><a href="show_urls.html">Article Links</a></li>
             <li><a href="https://github.com/Zara721/ReasearchProject_mmiwg">GitHub</a></li>
         </ul>
     </nav>
@@ -21,8 +22,9 @@
                     MMIWG Research Project - Dashboard
                   </h1>
                 <p class="text-small">
-                    The MMIWG Research Project Dashboard is a visual exploration of the representation of Missing and Murdered Indigenous Women and Girls (MMIWG) in global media. Leveraging data from the Global Knowledge Graph (GKG) database, part of the GDELT project, this dashboard provides a unique perspective on how MMIWG issues are reported and perceived across various news sites. The primary dataset for the following visualizations consists of 1703 entries, analyzing article counts, thematic trends, domain names, and word clouds derived from articles published between 2015 and 2024. Notably, for the word cloud, only ~1000 URLs were used, as those were the ones whose title and body text were successfully retrieved.                </p>
+                    The MMIWG Research Project Dashboard is a visual exploration of the representation of Missing and Murdered Indigenous Women and Girls (MMIWG) in global media. Utilizing data from the GDELT project, specifically the Global Knowledge Graph (GKG) database, I employed SQL queries to filter data based on specific criteria, such as location, keywords, and themes, to extract relevant information. Additionally, I utilized k-means clustering to identify non-relevant articles and refine my queries further. After extensive data filtering and refinement, I narrowed down the dataset to around 20,000 relevant entries from the original 1.8 million, ensuring a more focused analysis of the representation of MMIWG in the news. After removing duplicates and doing more using keywords, themes, and proper names to do further filtering, I had a subset of around 1,703 entries for in-depth analysis. <br>
 
+                    <br>This dashboard provides a unique perspective on how MMIWG issues are reported and perceived across various news sites. The primary dataset for the following visualizations consists of the subset of 1703 entries, analyzing article counts, thematic trends, domain names, and word clouds derived from articles published between 2015 and 2024. Notably, for the word cloud, only ~1000 URLs were used, as those were the ones whose title and body text were successfully retrieved by my web scraping program.
             </div>
         </div>
     </section>

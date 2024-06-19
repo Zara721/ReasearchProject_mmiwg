@@ -17,7 +17,7 @@ FROM mmiwg_events
 df = pd.read_sql_query(query, sqliteConnection)
 
 
-# Define a function to extract the domain from a URL
+# function that extracts the domain from a URL
 def extract_domain(url):
     return url.split('//')[-1].split('/')[0]
 

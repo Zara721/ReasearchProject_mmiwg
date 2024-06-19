@@ -1,10 +1,33 @@
+"""
+Sources: https://www.youtube.com/watch?v=QpzMWQvxXWk
+"""
 import pandas as pd
 from matplotlib import pyplot as plt
+import seaborn as sns
+
+from nltk.sentiment import SentimentIntensityAnalyzer
 
 from transformers import AutoTokenizer
 from transformers import AutoModelForSequenceClassification
 import torch.nn.functional as F
 
+plt.style.use('ggplot')
+
+# Read in data
+df = pd.read_excel("../visualize_data/data/mmiwg_urls.xlsx")
+test_title = df['title'][50]
+
+
+def preprocess_text(text):
+    # Replace the phrase "missing, murdered indigenous women" with "indigenous women"
+    text = text.replace("missing, murdered indigenous women", "indigenous women")
+    return text
+
+
+# test_title = preprocess_text(test_title)
+# print(test_title)
+# sia = SentimentIntensityAnalyzer()
+# print(sia.polarity_scores(test_title))
 
 article_title = "Missing and murdered Aboriginal children: apologies offer little in the face of systemic police failures | Amanda Porter and Alison Whittaker | The Guardian"
 article_title2 = "Canada to launch inquiry into missing, murdered Aboriginal women | Daily Sabah"
@@ -171,16 +194,48 @@ MODEL = f"cardiffnlp/twitter-roberta-base-sentiment"
 tokenizer = AutoTokenizer.from_pretrained(MODEL)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL)
 
-# Run for Roberta Model
-encoded_text = tokenizer(article_title3, return_tensors='pt')
-output = model(**encoded_text)
-scores = output[0][0].detach()
-softmax_scores = F.softmax(scores, dim=0)
-# print(scores)
 
-scores_dict = {
-    'roberta_neg': scores[0],
-    'roberta_neutral': scores[1],
-    'roberta_pos': scores[2],
-}
-print(scores_dict)
+def polarity_scores_roberta(text):
+    encoded_text = tokenizer(text, return_tensors='pt')
+    output = model(**encoded_text)
+    scores = output[0][0].detach()
+    softmax_scores = F.softmax(scores, dim=0)
+    # print(scores)
+
+    scores_dict = {
+        'roberta_neg': scores[0],
+        'roberta_neutral': scores[1],
+        'roberta_pos': scores[2],
+    }
+    return scores_dict
+
+
+sia = SentimentIntensityAnalyzer()
+results = {}
+
+# Run polarity score on the entire dataset
+for i, row in df.iterrows():
+    text = row["title"]
+    if isinstance(text, float):  # Check if text is a float
+        text = str(text)
+    vader_result = sia.polarity_scores(text)
+    vader_results_rename = {}
+    for key, value in vader_result.items():
+        vader_results_rename[f"vader_{key}"] = value
+    roberta_result = polarity_scores_roberta(text)
+    both = {**vader_results_rename, **roberta_result}
+
+    results[text] = both
+
+results_df = pd.DataFrame(results).T
+results_df = results_df.reset_index().rename(columns={'index': 'title'})
+
+# Compare results across models
+
+# TypeError: len() of a 0-d tensor
+# sns.pairplot(data=results_df, vars=['vader_neg', 'vader_neu', 'vader_pos',
+#                                     'roberta_neg', 'roberta_neutral', 'roberta_pos',
+#                                     ])
+# plt.show()
+
+

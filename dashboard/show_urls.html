@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MMIWG Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar background">
+        <ul class="nav-list">
+            <li><a href="main.html">Home</a></li>
+            <li><a href="">Article Links</a></li>
+            <li><a href="https://github.com/Zara721/ReasearchProject_mmiwg">GitHub</a></li>
+        </ul>
+    </nav>
+
+    <section class="article_links_sections">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big">
+                    MMIWG Research Urls
+                  </h1>
+                <p class="text-small">
+                    Below is a table containing the date, link to the article, article domain name, and title (if retrievable) of all the 1703 articles used in the research. </p>
+                <div class="table-container">
+                    <table id="csvTable"></table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function fetchData() {
+        fetch('data/article_link_info.csv')
+    .then(response => response.text())
+    .then(data => {
+            const lines = data.split('\n');
+            const headers = lines[0].split('#');
+
+            // Process headers
+            const processedHeaders = headers.map(header => header.trim());
+            let thead = '<tr>';
+            processedHeaders.forEach(header => {
+                thead += `<th style="text-align: left;">${header}</th>`;
+            });
+            thead += '</tr>';
+
+            // Process body
+            let tbody = '';
+            for (let i = 1; i < lines.length; i++) {
+                if (lines[i]) { // Check if line is not empty
+                    const values = lines[i].split('#').map(value => value.trim());
+                    const processedValues = values.map((value, index) => {
+                        if (value.startsWith("http")) {
+                            return `<a href="${value}" target="_blank">${value}</a>`;
+                        } else {
+                            return value? value : "N/A";
+                        }
+                    });
+                    tbody += '<tr>';
+                    processedValues.forEach(value => {
+                        tbody += `<td>${value}</td>`;
+                    });
+                    tbody += '</tr>';
+                }
+            }
+
+            // Append thead and tbody to the table
+            const table = document.getElementById('csvTable');
+            table.innerHTML = ''; // Clear existing content
+            table.innerHTML += thead + tbody;
+        })
+    .catch(error => console.error('Error loading CSV:', error));
+    }
+
+    fetchData();
+
+
+    </script>
+    
+</body>
+
+</html>
