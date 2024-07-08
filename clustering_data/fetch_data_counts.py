@@ -35,7 +35,7 @@ df.to_csv('../data/url_counts.csv', index=False)
 # Close the connection to the SQLite database
 sqliteConnection.close()
 
-filename = '../data/counts_frequency_table_v2.csv'
+filename = '../project_data_files/frequency_tables/counts_frequency_table_v2.csv'
 
 
 def parse_counts(counts):
@@ -67,7 +67,7 @@ counts_df.drop(numeric_columns, axis=1, inplace=True)
 counts_df.to_csv(filename, index=False)
 
 # Reading the previously saved DataFrames
-url_counts_df = pd.read_csv('../data/url_counts.csv')
+url_counts_df = pd.read_csv('../project_data_files/url_counts.csv')
 count_frequency_df = pd.read_csv(filename)
 
 # Concatenating the data frames so that the count_frequency_table has the article_url column

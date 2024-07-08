@@ -11,7 +11,7 @@ https://www.w3schools.com/python/matplotlib_intro.asp
 https://builtin.com/data-science/pandas-show-all-columns
 '''
 
-df = pd.read_csv('../data/counts_frequency_table_v2.csv', index_col='article_url')
+df = pd.read_csv('../project_data_files/frequency_tables/counts_frequency_table_v2.csv', index_col='article_url')
 
 
 def optimise_k_means(data, max_k):

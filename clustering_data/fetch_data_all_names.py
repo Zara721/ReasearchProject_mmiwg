@@ -36,7 +36,7 @@ df.to_csv('../data/url_all_names.csv', index=False)
 # Close the connection to the SQLite database
 sqliteConnection.close()
 
-filename = '../data/all_names_frequency_table.csv'
+filename = '../project_data_files/frequency_tables/all_names_frequency_table.csv'
 
 
 def parse_all_names(all_names):
@@ -71,7 +71,7 @@ all_names_df.fillna(0, inplace=True)
 all_names_df.to_csv(filename, index=False)
 
 # Reading the previously saved DataFrames
-url_all_names_df = pd.read_csv('../data/url_all_names.csv')
+url_all_names_df = pd.read_csv('../project_data_files/url_all_names.csv')
 all_names_frequency_df = pd.read_csv(filename)
 
 # Concatenating the data frames so that the all_names_frequency_table has the article_url column

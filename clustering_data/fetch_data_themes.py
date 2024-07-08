@@ -35,7 +35,7 @@ df.to_csv('../data/url_themes.csv', index=False)
 # Close the connection to the SQLite database
 sqliteConnection.close()
 
-filename = '../data/theme_frequency_table.csv'
+filename = '../project_data_files/frequency_tables/theme_frequency_table.csv'
 
 
 def parse_themes(themes):
@@ -66,7 +66,7 @@ themes_df.fillna(0, inplace=True)
 themes_df.to_csv(filename, index=False)
 
 # Reading the previously saved DataFrames
-url_themes_df = pd.read_csv('../data/url_themes.csv')
+url_themes_df = pd.read_csv('../project_data_files/url_themes.csv')
 theme_frequency_df = pd.read_csv(filename)
 
 # Concatenating the data frames so that the theme_frequency_table has the article_url column

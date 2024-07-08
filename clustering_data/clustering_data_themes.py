@@ -11,7 +11,7 @@ https://www.w3schools.com/python/matplotlib_intro.asp
 https://builtin.com/data-science/pandas-show-all-columns
 '''
 
-df = pd.read_csv('../data/theme_frequency_table.csv', index_col='article_url')
+df = pd.read_csv('../project_data_files/frequency_tables/theme_frequency_table.csv', index_col='article_url')
 
 # since the data only holds binary values no need to standardize the data
 # scaler = StandardScaler()
