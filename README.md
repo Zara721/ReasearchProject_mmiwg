@@ -26,6 +26,17 @@ With 1703 article URLs, next, I made a program to retrieve the title and body te
 
 To ensure this code would work before running it on all 1703 URLs, I did some tests with 50 and 100 URLs, changing the number of threads to find a balance between faster times and how much my computer could handle. This process resulted in me using a limit of 15 concurrent tasks when running the program on the full url list. However, the program only accessed ~25% of the URLs during the first run. To rectify this, I changed the timeout from 30 seconds to 60 seconds; this proved to be effective as on the program's second run, ~50% of the URLs ended up being successfully accessed, with another ~25% being bad requests, and the last ~25% not being able to be accessed.
 
+### Accessible Visualizations
+I made a dashboard with different data visualizations for a better overview of the articles in my database. I made a bar chart that showed the distribution of article counts over the years. I made other bar charts to show the top themes across the different articles, with the themes sourced from the GDELT database. I also made a chart to show the top domain names of the articles about MMIWG. Furthermore, I made a word cloud using all the articles' title text, body text and another one for all the AllNames from the different articles. There is also a table of the current articles in my database, with the date the article was published, the article link and the title of the webpage that had been retrieved.
+<b>Dashboard Link:</b> https://zara721.github.io/MMIWG-Dashboard/index.html
+
+### Updating Database
+After a lack of articles from a website in my database was pointed out, I went back to review my queries for any blind spots. I made a table with all the information about the Tina Fontaine events, and just looking at the results makes it clear that the main reason that my query did not pick most of these up is that only 936 had a Counts like KILL which was a key filter, and 1586 had a Counts column that is simply blank. Those two numbers accounted for 86% of the Tina Fontaine articles, so for the entries that do have Counts recorded, 70% of those do contain the term "KILL", while the remaining 30% use terms like ARREST, SEIZE, effect, KIDNAP, PROTEST, WOUND.
+
+I then checked whether the ethnicity keywords were working correctly, and 97% of the articles did contain some version of my filter for Indigenous. The leading themes I chose to exclude would not have excluded more than 5% of the Tina Fontaine articles. However, 88 of Tina Fontaine's articles had Themes that were also blank. Although that is only 3% of articles, it still feels important to note.
+
+So, upon review, I found that the most significant factor that went awry in my filtering process was my use of the Counts column, as I was unaware that such a substantial number of articles have blank Counts. After using this information along with a list of keywords, I made a new table that increased my entries from 1703 to 4613, with 3087 of those articles also having the title and body text retrieved and stored in the table.
+
 
 ### Helpful Links
 * https://www.gdeltproject.org/
