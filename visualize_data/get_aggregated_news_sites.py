@@ -11,8 +11,8 @@ sqliteConnection = sqlite3.connect(r'C:\Users\zaza2\canada_us_events.db')
 
 # Execute a SQL query and load the results into a DataFrame
 query = """
-SELECT DocumentIdentifier as url
-FROM mmiwg_events
+SELECT Urls as url
+FROM mmiwg_related_articles
 """
 df = pd.read_sql_query(query, sqliteConnection)
 
@@ -53,7 +53,7 @@ for main_domain, variations in domain_variations.items():
     merged_counts.loc[merged_counts['domain'] == main_domain, 'count'] += domain_counts.loc[domain_counts['domain'].isin(variations), 'count'].sum()
 
 # Filter domains with counts higher than 10 and exclude variations
-filtered_domains = merged_counts[(merged_counts['count'] > 10) & (~merged_counts['domain'].isin([var for sublist in domain_variations.values() for var in sublist]))]
+filtered_domains = merged_counts[(merged_counts['count'] > 15) & (~merged_counts['domain'].isin([var for sublist in domain_variations.values() for var in sublist]))]
 
 # Sort the filtered domains by count in descending order
 sorted_filtered_domains = filtered_domains.sort_values(by='count', ascending=False)

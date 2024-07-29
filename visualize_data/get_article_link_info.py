@@ -11,8 +11,8 @@ sqliteConnection = sqlite3.connect(r'C:\Users\zaza2\canada_us_events.db')
 
 # Execute a SQL query and load the results into a DataFrame
 query = """
-SELECT DATE as Date, DocumentIdentifier as ArticleLink
-FROM mmiwg_events
+SELECT Date, Urls as ArticleLink
+FROM mmiwg_related_articles 
 """
 
 df = pd.read_sql_query(query, sqliteConnection)

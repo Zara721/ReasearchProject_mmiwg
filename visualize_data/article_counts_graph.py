@@ -11,17 +11,17 @@ sqliteConnection = sqlite3.connect(r'C:\Users\zaza2\canada_us_events.db')
 
 # Execute a SQL query and load the results into a DataFrame
 query = """
-SELECT DATE, COUNT(*) as article_count 
-FROM mmiwg_events
-GROUP BY DATE;
+SELECT Date, COUNT(*) as article_count 
+FROM mmiwg_related_articles
+GROUP BY Date;
 """
 df = pd.read_sql_query(query, sqliteConnection)
 
-# Convert the DATE column to datetime format
-df['DATE'] = pd.to_datetime(df['DATE'], format='%Y%m%d%H%M%S')
+# Convert the Date column to Datetime format
+df['Date'] = pd.to_datetime(df['Date'], format='%Y%m%d%H%M%S')
 
-# Extract the year from the DATE column and set it as a new column
-df['year'] = df['DATE'].dt.year
+# Extract the year from the Date column and set it as a new column
+df['year'] = df['Date'].dt.year
 
 # Group by year and count the number of articles per year
 df_yearly = df.groupby('year')['article_count'].sum().reset_index()

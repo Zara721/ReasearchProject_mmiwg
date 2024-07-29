@@ -10,9 +10,6 @@ from bs4 import BeautifulSoup
 
 
 def extract_url_from_script(html_content):
-    """
-    Extracts the URL from the __wm.wombat function call within a script tag.
-    """
     soup = BeautifulSoup(html_content, 'html.parser')
     script_tags = soup.find_all('script', {'type': 'text/javascript'})
 

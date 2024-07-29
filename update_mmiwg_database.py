@@ -10,7 +10,7 @@ df = pd.read_excel(excel_file_path)
 sqliteConnection = sqlite3.connect(r'C:\Users\zaza2\canada_us_events.db')
 cursor = sqliteConnection.cursor()
 
-# Access the table housing mmiwg events
+# Access the table with mmiwg events
 table_name = 'mmiwg_related_articles'
 
 # Iterate through URLs and update the database
